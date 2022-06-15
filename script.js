@@ -12,6 +12,34 @@ const change = document.querySelector(".change");
 const reset = document.querySelector(".reset");
 const definition = document.querySelector(".definition");
 const letterArr = new Set();
+const darkThemeToggle = document.querySelector(".slider");
+
+darkThemeToggle.addEventListener("click", function () {
+  if (!darkThemeToggle.classList.contains("darkMode")) {
+    changeTheme("black", "white");
+    darkThemeToggle.classList.add("darkMode");
+  } else if (darkThemeToggle.classList.contains("darkMode")) {
+    changeTheme("white", "black");
+    darkThemeToggle.classList.remove("darkMode");
+  }
+});
+
+const changeTheme = (bgColor, textColor) => {
+  document.querySelector("body").style.background = `${bgColor}`;
+  document.querySelector(".wordle").style.color = `${textColor}`;
+  document.querySelector(".title").style.color = `${textColor}`;
+  document.querySelector(".guess-grid").style.color = `${textColor}`;
+  document.querySelector(".msg").style.color = `${textColor}`;
+  document.querySelector(".msg2").style.color = `${textColor}`;
+  document.querySelector(".definition").style.color = `${textColor}`;
+  document.querySelector(".helpWhite").classList.toggle("hide");
+  document.querySelector(".helpBlack").classList.toggle("hide");
+  document.querySelector(".exchangeWhite").classList.toggle("hide");
+  document.querySelector(".exchangeBlack").classList.toggle("hide");
+  document.querySelector(".resetWhite").classList.toggle("hide");
+  document.querySelector(".resetBlack").classList.toggle("hide");
+};
+
 console.log(targetWord);
 
 change.addEventListener("click", function () {
