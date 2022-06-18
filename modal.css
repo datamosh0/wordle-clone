@@ -32,6 +32,9 @@ body {
   top: 1rem;
   left: 1rem;
 }
+.modal {
+  opacity: 0;
+}
 
 .details-modal {
   background: #fff;
@@ -80,7 +83,7 @@ body {
   border-top: 1px solid #e0e0e0;
   padding: 2em;
   pointer-events: all;
-  overflow: auto;
+  height: auto;
 }
 .details-modal-overlay {
   transition: opacity 0.2s ease-out;
@@ -118,4 +121,8 @@ details summary::-webkit-details-marker {
   gap: 0.25em;
   margin: 1rem 0;
   color: black;
+}
+
+.svg {
+  z-index: 100;
 }

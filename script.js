@@ -9,10 +9,25 @@ const alertContainer = document.querySelector("[data-alert-container]");
 const guessGrid = document.querySelector("[data-guess-grid]");
 let targetWord = TargetWords[Math.floor(Math.random() * 12971)];
 const change = document.querySelector(".change");
+const openModal = document.querySelector(".openModal");
 const reset = document.querySelector(".reset");
 const definition = document.querySelector(".definition");
 const letterArr = new Set();
 const darkThemeToggle = document.querySelector(".slider");
+const modal = document.querySelector(".modal");
+openModal.addEventListener("click", function () {
+  modal.style.opacity = "1";
+  setTimeout(() => {
+    document.querySelector("body").addEventListener("click", closeModal);
+  }, 100);
+});
+const closeModal = (e) => {
+  if (!modal.contains(e.target)) {
+    modal.style.opacity = "0";
+
+    document.querySelector("body").removeEventListener("click", closeModal);
+  }
+};
 
 darkThemeToggle.addEventListener("click", function () {
   if (!darkThemeToggle.classList.contains("darkMode")) {
@@ -50,6 +65,7 @@ change.addEventListener("click", function () {
   definition.style.display = "none";
   console.log(targetWord);
 });
+
 reset.addEventListener("click", function () {
   resetBoard();
   startInteraction();
@@ -86,6 +102,7 @@ function stopInteraction() {
 }
 
 function handleMouseClick(e) {
+  e.preventDefault();
   if (e.target.matches("[data-key]")) {
     pressKey(e.target.dataset.key);
     return;
@@ -103,6 +120,7 @@ function handleMouseClick(e) {
 }
 
 function handleKeyPress(e) {
+  e.preventDefault();
   if (e.key === "Enter") {
     submitGuess();
     return;
