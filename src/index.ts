@@ -56,17 +56,11 @@ const changeTheme = (bgColor: string, textColor: string) => {
   (
     document.querySelector(".guess-grid") as HTMLElement
   ).style.color = `${textColor}`;
-  (document.querySelector(".msg") as HTMLElement).style.color = `${textColor}`;
-  (document.querySelector(".msg2") as HTMLElement).style.color = `${textColor}`;
   (
     document.querySelector(".definition") as HTMLElement
   ).style.color = `${textColor}`;
   document.querySelector(".helpWhite").classList.toggle("hide");
   document.querySelector(".helpBlack").classList.toggle("hide");
-  document.querySelector(".exchangeWhite").classList.toggle("hide");
-  document.querySelector(".exchangeBlack").classList.toggle("hide");
-  document.querySelector(".resetWhite").classList.toggle("hide");
-  document.querySelector(".resetBlack").classList.toggle("hide");
 };
 
 console.log(targetWord);

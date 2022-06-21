@@ -98,6 +98,10 @@ img {
 .reset:hover img {
   display: none;
 }
+.change > button {
+  padding: 0.1rem;
+  font-size: 1.1rem;
+}
 
 .definition {
   text-align: center;
