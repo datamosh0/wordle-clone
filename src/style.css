@@ -98,9 +98,19 @@ img {
 .reset:hover img {
   display: none;
 }
+
+.checkbox {
+  height: 2rem;
+}
+.checked {
+  background-color: white;
+  padding: 0;
+}
+
 .change > button {
   padding: 0.1rem;
   font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .definition {

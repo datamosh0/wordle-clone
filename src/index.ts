@@ -18,8 +18,10 @@ const openModal = document.querySelector(".openModal") as HTMLElement;
 const reset = document.querySelector(".reset") as HTMLElement;
 const definition = document.querySelector(".definition") as HTMLElement;
 const letterArr = new Set();
-const darkThemeToggle = document.querySelector(".slider") as HTMLElement;
 const modal = document.querySelector(".modal") as HTMLElement;
+const unchecked = document.querySelector(".unchecked") as HTMLElement;
+const checked = document.querySelector(".checked") as HTMLElement;
+const darkThemeToggle = document.querySelector(".checkbox") as HTMLElement;
 
 openModal.addEventListener("click", function () {
   modal.style.opacity = "1";
@@ -36,6 +38,8 @@ const closeModal = (e: any) => {
 };
 
 darkThemeToggle.addEventListener("click", function () {
+  unchecked.classList.toggle("hide");
+  checked.classList.toggle("hide");
   if (!darkThemeToggle.classList.contains("darkMode")) {
     changeTheme("black", "white");
     darkThemeToggle.classList.add("darkMode");
