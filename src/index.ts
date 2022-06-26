@@ -29,7 +29,7 @@ openModal.addEventListener("click", function () {
     document.querySelector("body").addEventListener("click", closeModal);
   }, 100);
 });
-const closeModal = (e: any) => {
+const closeModal = (e: Event) => {
   if (!modal.contains(e.target as HTMLElement)) {
     modal.style.opacity = "0";
 
@@ -113,38 +113,42 @@ function stopInteraction() {
   document.removeEventListener("keydown", handleKeyPress);
 }
 
-function handleMouseClick(e: any) {
+function handleMouseClick(e: Event) {
   e.preventDefault();
-  if (e.target.matches("[data-key]")) {
-    pressKey(e.target.dataset.key);
+
+  if ((e.target as HTMLElement).matches("[data-key]")) {
+    pressKey((e.target as HTMLElement).dataset.key);
     return;
   }
 
-  if (e.target.matches("[data-enter]")) {
+  if ((e.target as HTMLElement).matches("[data-enter]")) {
     submitGuess();
     return;
   }
 
-  if (e.target.matches("[data-delete]")) {
+  if ((e.target as HTMLElement).matches("[data-delete]")) {
     deleteKey();
     return;
   }
 }
 
-function handleKeyPress(e: any) {
+function handleKeyPress(e: Event) {
   e.preventDefault();
-  if (e.key === "Enter") {
+  if ((e as KeyboardEvent).key === "Enter") {
     submitGuess();
     return;
   }
 
-  if (e.key === "Backspace" || e.key === "Delete") {
+  if (
+    (e as KeyboardEvent).key === "Backspace" ||
+    (e as KeyboardEvent).key === "Delete"
+  ) {
     deleteKey();
     return;
   }
 
-  if (e.key.match(/^[a-z]$/)) {
-    pressKey(e.key);
+  if ((e as KeyboardEvent).key.match(/^[a-z]$/)) {
+    pressKey((e as KeyboardEvent).key);
     return;
   }
 }
